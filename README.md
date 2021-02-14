@@ -1,4 +1,4 @@
-#Algorytmy i Struktury Danych (Algorithms and Data Structures)
+# Algorytmy i Struktury Danych (Algorithms and Data Structures)
 **Paweł Kruczkiewicz**<br>
 **Course, freshman year, 2-nd semester, 2019/20**<br>
 Introduction to basic algorithms and data structures
