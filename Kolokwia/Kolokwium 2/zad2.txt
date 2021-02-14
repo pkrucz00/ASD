@@ -1,0 +1,10 @@
+Paweł Kruczkiewicz
+Sprawdzamy, czy graf jest spójny (np. za pomocą DFSa). Jeżeli graf jest niespójny i istnieje więcej niż jeden spójny podgraf zawierający miasto (czyli dopuszczamy spójne podgrafy zawierające wyłącznie oazy), zwracamy fałsz; wpp, przechodzimy dalej.  Złożoność O(V+E)
+Tworzymy jeden zbiór z oaz (zwany dalej "superoazą"), które są ze sobą połączone krawędzią, za pomocą procedury "Find/Union". Zliczamy dla kazdej "superoazy" liczbę sąsiadujących z nią miast.(Złożoność: O((V+E)log*V))
+W ten sposób otrzymaliśmy nowy graf G' = (V', E'), gdzie V' zawiera wierzchołki typu miasto i wierzchołki "superoazy" (Nie zapisujemy go jako osobny graf, wystarcza nam struktura "union"). Dla niego sprawdzamy, czy zawiera cykl eulerowski*, czyli czy każda struktura "union" zawiera parzystą sumę sąsiadujących wierzchołków.
+Jeżeli graf G' zawiera cykl eulerowski, to oznacza, że zwracamy prawdę, w przeciwnym wypadku, zwracamy fałsz.  Złożoność O(V+E)  
+
+Ten algorytm jest poprawny, ponieważ z każdej oazy w superoazie, możemy poruszać się "bezstratnie". Pozostały problem to problem cyklu Eulera (Żadnego miasta nie odwiedzimy dwukrotnie, ponieważ zawiera jeden wierzchołek na wejście, i drugi na wyjście).
+Złożoność O(V+E)+O( (V+E)*log*V)+O(V+E) = O((V+E)*log*V)
+
+*zakładamy , że jeżeli z miasta x wychodzimy jedną ścieżką, to wejść inną. W przeciwnym wypadku potrzebny byłby dodatkowy edgecase, gdy do x-a wracamy tą samą drogą (Wystaczyłoby "wyrzucić" krawędź x-a z powyższego algorytmu)

@@ -1,0 +1,7 @@
+zad 3
+Tworzymy tablicę haszującą (najlepiej trochę większą (np. dwukrotnie) od wyjściowej tablicy, aby nie było kolizji).
+Wstawiamy tam elementy x-A[j]. Natępnie staramy się znaleźć elementy A[i] w tej tablicy.
+Jeżeli dany hash znajduje się w tablicy, to sprawdzamy, czy zachodzi równość A[i] + A[j] == x. Jeśli tak, zwracamy prawdę.
+Jeśli przeszliśmy całą tablicę, a nie znaleźliśmy odpowiedniej pary liczb, zwracamy fałsz.
+
+zad 4

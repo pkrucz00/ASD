@@ -1,0 +1,9 @@
+Paweł Kruczkiewicz
+
+Sortujemy naszą tablicę A (najlepiej quicksortem, zlozonosc O(nlogn), ale to nie ma wiekszego znaczenia, bo caly algorytm ma zlozonosc O(n^2) ). Ustawiamy trzy indeksy: i, j, k. "i" ustawiamy na pierwszy, najmniejszy element, "j" na koncowy, "k" na pierwszy.
+Algorytm polega na tym, że element A[k] jest testowaną liczbą. Sprawdzamy sumę A[i] + A[j]. Jeżeli A[i] + A[j] < A[k], inkrementujemy i, jeśli A[i] + A[j] > A[k], dekrementujemy j. Nalezy tez dopilnowac, aby i!=k oraz j!=k, poniewaz A[k] ma byc sumą dwoch innych liczb. Jesli i==k inkrementujemy i, a jesli j==k, to dekrementujemy j
+przerywamy kiedy: a) A[i] + A[j] == A[k] - inkrementujemy k b) indeksy są równe (ewentualnie gdy się skrzyżują, jednakze z tresci zadania trudno wywnioskowac, czy np jesli A[i]== 4 i A[j] == 4, a A[k] == 8, to warunki sa spelnione. Zakladamy jednak, że nie są), wtedy zwracamy falsz
+Powtarzamy powyższą operację dla wszystkich k.
+Złożoność to O(nlogn) (sortowanie) + O(n)[przechodzenie indeksami po tablicy - pesymistycznie skrzyzuja sie, czyli przesuniemy je n razy łącznie]*O(n)[operacja powtórzona dla kazdego n] = O(n^2) [calosc]
+Dowód: Kazda liczba moze byc przedstawiona jako c = a + b. najlepszym rozwiazaniem jest odpowiednie przechodzenie od najbardziej skrajnej mozliwosci (elementy ustawione na skrajnych krańcach tablicy) i przechodzic po kolei. Nie "gubimy" w ten sposob zadnej potencjalnej wartosci, która mogłaby byc sumą, ponieważ przechodzimy "po kolei".
+Jednoczesnie zapewniamy najszybsze przejscie po tablicy (czyli przejscie liniowe po wszystkich elementach) 

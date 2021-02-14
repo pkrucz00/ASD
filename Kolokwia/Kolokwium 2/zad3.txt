@@ -1,0 +1,10 @@
+Paweł Kruczkiewicz
+Tworzymy graf G = (V,E) w następujący sposób - kazdy klocek jest reprezentowany przez jeden wierzchołek. Jeżeli bi = ai to łączymy kocek Ki z kolckiem Kj (można to zrobić najszybciej, tworząc dwie listy - jedną wartości a, drugą wartości b, posortować je (czas O(nlogn)) i nastepnie za pomocą wskaźników dokonywać łączeń (O(n)))  (Stworzenie grafu: O(nlogn))
+Następnie sortujemy topologicznie cały graf (gdyż G jest DAGiem dzięki założeniu, że nie zaczynają się w tym samym punkcie). Ważne, aby większe klocki były brane pierwsze (np., jeżeli mamy klocki [1,4), [6,7), [4,7), [7,10), to zostały ułożone w kolejności [1,4), [4,7),  [6,7), [7,10) )  O(V+E) = O(n^2) jeżeli graf jest gęsty (maksymalna suma krawedzie w DAGu to 1+...+n-1 = O(n^2)), lecz raczej jest to O(n)
+W kolejnym kroku, począwszy od pierwszego wierzchołka usuwamy ścieżki w DAGu G. Dla każdej ścieżki zapisujemy a pierwszego elementu oraz b ostatniego. Powtarzamy dla kolejnego "obciętego" o poprzednią ścieżkę DAGu. Dla każdej usuniętej ścieżki zapisujemy pierwsze a i ostatnie b. Pesymistycznie O(n^2)
+Jeżeli jeden z przedziałów wyznaczonych przez poszczególne ścieżki będzie nakładał się, ale nie będzie się zawierał, zwracamy fałsz. Możemy jednak douścić, że ściągany przedział zawiera się w obecnie ściąganym - wtedy przy składaniu klocków, można byłoby zmienić kolejność przedziałów (obecnie ściągany byłby tym dolnym. Jeżeli uda nam się usunąć wszystkie ścieżki, zwracamy prawdę.
+
+Algorytm działa, ponieważ każda usunięta ścieżka stanowi przykładową drogę, a wyznaczone przez ścieżkę zakresy - nowy zakres "podłogi", na której można położyć klocek (można jednak korzystać z podłogi położonej wcześniej). Jeżeli natomiast zakresy nakładałyby się na siebie - warunki zadania nie byłyby spełnione.
+Ostatecznie złożoność w przypadku pesymistycznym może wynieść O(n^2)
+Algorytm nie działałby, gdyby początki nie byłyby różne, gdyż mogłoby dojść do stworzenia cykli w grafie (np. [1,2), [1,2)), więc niebyłby DAGiem i nie byłby możliwy do posortowania topologicznego
+   
